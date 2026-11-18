@@ -1,0 +1,92 @@
+// Practical 4
+// Title: Demonstrate Single and Multilevel
+// Inheritance using Person, Student and
+// GraduateStudent classes.
+
+
+#include <iostream>
+using namespace std;
+
+// Base Class
+class Person
+{
+public:
+    string name;
+    int age;
+
+    void getPerson()
+    {
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Age: ";
+        cin >> age;
+    }
+
+    void displayPerson()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+// Derived Class - Single Inheritance
+class Student : public Person
+{
+public:
+    int rollNo;
+
+    void getStudent()
+    {
+        cout << "Enter Roll Number: ";
+        cin >> rollNo;
+    }
+
+    void displayStudent()
+    {
+        displayPerson();
+        cout << "Roll Number: " << rollNo << endl;
+    }
+};
+
+// Derived Class - Multilevel Inheritance
+class GraduateStudent : public Student
+{
+public:
+    string degree;
+
+    void getGraduate()
+    {
+        cout << "Enter Degree: ";
+        cin >> degree;
+    }
+
+    void displayGraduate()
+    {
+        displayStudent();
+        cout << "Degree: " << degree << endl;
+    }
+};
+
+int main()
+{
+    cout << "--- Student Details ---" << endl;
+
+    Student s;
+    s.getPerson();
+    s.getStudent();
+
+    cout << "\n--- Single Inheritance ---" << endl;
+    s.displayStudent();
+
+    cout << "\n--- Graduate Student Details ---" << endl;
+
+    GraduateStudent g;
+    g.getPerson();
+    g.getStudent();
+    g.getGraduate();
+
+    cout << "\n--- Multilevel Inheritance ---" << endl;
+    g.displayGraduate();
+
+    return 0;
+}
